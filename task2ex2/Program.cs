@@ -9,9 +9,20 @@ namespace task2ex2
             Console.WriteLine("Set Lenght of sqrt matrix");
             int n= int.Parse(Console.ReadLine());
             int[,] matrix = new int[n, n];
+
             MatrixFiller.FillLikeASnake(matrix);
+            Console.WriteLine("1");
+            PrintMatrix(matrix);
+
+            matrix = new int[n, n];
+            MatrixFiller.FillLikeADiagonalSnake(matrix);
             Console.WriteLine("2");
             PrintMatrix(matrix);
+
+            matrix = new int[n, n];
+            MatrixFiller.FillLikeASpiralSnake(matrix);
+           // Console.WriteLine("3");
+           // PrintMatrix(matrix);
 
         }
         static void PrintMatrix(int[,] matrix)

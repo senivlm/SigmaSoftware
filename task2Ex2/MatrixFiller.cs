@@ -15,7 +15,7 @@ namespace task2Ex2
             matrix[0, 0] = 1;
             matrix[n - 1, n - 1] = n * n;
             bool up = true;
-            int increment = 1;
+
             for (int value = 1; value < n * n; value++)
             {
                 if (up)

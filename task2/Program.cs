@@ -13,7 +13,7 @@ namespace test2
             storage[3] = new DailyProduct("BREAD", 100, Term.Day);
             storage[4] = new Meat("PORK", 100, Grade.VVSOP, MeatType.Pork);
 
-            Console.WriteLine("Input meat name!");
+            Console.WriteLine("Input meat name! ");
             String meatName = Console.ReadLine();
 
 

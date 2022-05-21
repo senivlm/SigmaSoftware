@@ -1,6 +1,6 @@
 ﻿using learning1;
 
-Product product1 = new Product("Макароны");
+Product product1 = new Product("Макароны ");
 product1.Price = 20;
 product1.Wight = 1;
 

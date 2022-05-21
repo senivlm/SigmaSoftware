@@ -28,6 +28,7 @@ namespace task2Ex2
 
                 matrix[i, j] = value + 1;
                 matrix[n - i - 1, n - j - 1] = n * n - value;
+
             }
 
            

@@ -10,6 +10,7 @@ namespace task2Ex2
             int n = int.Parse(Console.ReadLine());
             int[,] matrix = new int[n, n];
             MatrixFiller.FillLikeASnake(matrix);
+            MatrixFiller.FillLikeASnake(matrix);
             PrintMatrix(matrix);
 
         }

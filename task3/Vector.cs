@@ -16,8 +16,73 @@ namespace task3
             Random generator = new Random();
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = generator.Next(a, b);
+                array[i] = generator.Next(a, b+1);
             }
+        }
+
+        public static bool IsPolindrom(int[] arr)
+        {
+            bool result = arr.Length>0;
+            for (int i = 0; i < arr.Length/2; i++)
+            {
+                if (arr[i] != arr[arr.Length - i - 1]) {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+
+        public static int[] GetMaxSequence(int[] arr)
+        {
+            int j = 0;
+            int maxvalue = 0;
+            int curvalue = 0;
+
+            int index = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                curvalue = 1;
+                for (j = i; j < arr.Length - 1; j++)
+                {
+                    if (arr[j] + 1 == arr[j + 1])
+                    {
+                        curvalue++;
+                    }
+                    else { break; }
+                }
+                if (maxvalue < curvalue)
+                    {
+                    index = i;
+                    maxvalue = curvalue;
+                    };
+            }
+
+            int[] result = new int[maxvalue];
+            for (j = 0; j < maxvalue; j++)
+            {
+                result[j] = arr[index + j];
+            }
+
+            return result;
+        }
+
+        public void ReversMyImpl()
+        {
+            int buffer;
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                buffer = array[array.Length - i - 1];
+                array[array.Length - i - 1] = array[i];
+                array[i] = buffer;
+
+            }
+        }
+
+        public void ReversStandart()
+        {
+            Array.Reverse(array);
         }
 
         public void InitShufle()
@@ -61,6 +126,8 @@ namespace task3
             }
         }
 
+        
+
         public Pair[] CalculateFreq()
         {
             Pair[] pairs = new Pair[0];
@@ -68,7 +135,7 @@ namespace task3
             {
                 bool noPair = true;
 
-                for (int j = 0; j < pairs.Length; i++)
+                for (int j = 0; j < pairs.Length; j++)
                     if (pairs[j].value == array[i])
                     {
                         noPair = false;
@@ -88,12 +155,7 @@ namespace task3
 
         public override string ToString()
         {
-            string result = "";
-            for (int i = 0; i < array.Length; i++)
-            {
-                result = result + array[i] + ',';
-            }
-            return result;
+            return GetStringFromArray(array);
 
         }
 
@@ -110,6 +172,22 @@ namespace task3
             }
         }
 
+        public static String GetStringFromArray(int[] arr)
+        {
+            string result = "";
+            for (int i = 0; i < arr.Length; i++)
+            {
+                result = result + arr[i];
+                if (i < arr.Length - 1)
+                {
+                    result = result + ',';
+                }
+                
+            }
+            return result;
 
+        }
+
+        
     }
 }

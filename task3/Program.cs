@@ -52,12 +52,13 @@ namespace task3
 
             //Matrix.SortMatrixDiagonal(4, Direction.right);
 
-            int [,] matrix = new int[5,5];
+            int [,] matrix = new int[15,15];
             Matrix.InitRandom(matrix, 1, 2);
+            Console.WriteLine("for ");
+            
             Matrix.PrintMatrix(matrix);
 
-            
-            Console.WriteLine(Matrix.GetMaxSquare(matrix));
+            Console.WriteLine("Maximum square = " + Matrix.GetMaxSquare(matrix));
 
             //Console.WriteLine("Original  " + vector.ToString());
 

@@ -177,26 +177,9 @@ namespace task3
                                 }
                                 if (calc)
                                 {
-                                    if (maxSquare < ((i1 - i + 1) * (j1 - i + 1)))
+                                    if (maxSquare < ((i1 - i + 1) * (j1 - j + 1)))
                                     {
-                                        maxSquare = (i1 - i + 1) * (j1 - i + 1);
-                                    }
-
-                                    calc = false;
-
-                                    for (i2 = i; i2 < i1 + 1; i2++)
-                                    {
-                                        for (j2 = j; j2 < j1 + 1; j2++)
-                                        {
-                                            calc = i2 > i | j2 > j;
-                                            if (matrix[i, j] != matrix[i2, j2])
-                                            {
-                                                calc = false;
-                                                i2 = i1 + 1;
-                                                break;
-                                            }
-
-                                        }
+                                        maxSquare = (i1 - i + 1) * (j1 - j + 1);
                                     }
 
                                     calc = false;

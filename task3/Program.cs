@@ -28,27 +28,38 @@ namespace task3
             //}
 
 
-            Vector vector = new Vector(10);
-            vector.InitRandom(1, 2);
-            Console.WriteLine("Original  " + vector.ToString());
+            //Vector vector = new Vector(10);
+            //vector.InitRandom(1, 2);
+            //Console.WriteLine("Original  " + vector.ToString());
 
-            Pair[] pairs = vector.CalculateFreq();
-            foreach (Pair pair in pairs)
-            {
-                Console.WriteLine(pair.ToString());
-            }
+            //Pair[] pairs = vector.CalculateFreq();
+            //foreach (Pair pair in pairs)
+            //{
+            //    Console.WriteLine(pair.ToString());
+            //}
 
-            vector.ReversMyImpl();
-            Console.WriteLine("Revers MyImpl " + vector.ToString());
+            //vector.ReversMyImpl();
+            //Console.WriteLine("Revers MyImpl " + vector.ToString());
 
-            vector.ReversStandart();
-            Console.WriteLine("Revers Standart " + vector.ToString());
+            //vector.ReversStandart();
+            //Console.WriteLine("Revers Standart " + vector.ToString());
 
-            int[] arr = { 1, 3, 4, 1, 2, 3, 1, 2, 3, 4 };
-            //Console.WriteLine(Vector.IsPolindrom(arr));
-            int[] maxSequence = Vector.GetMaxSequence(arr);
-            Console.WriteLine("for " + Vector.GetStringFromArray(arr));
-            Console.WriteLine("Max sequence is " + Vector.GetStringFromArray(maxSequence));
+            //int[] arr = { 1, 3, 4, 1, 2, 3, 1, 2, 3, 4 };
+            ////Console.WriteLine(Vector.IsPolindrom(arr));
+            //int[] maxSequence = Vector.GetMaxSequence(arr);
+            //Console.WriteLine("for " + Vector.GetStringFromArray(arr));
+            //Console.WriteLine("Max sequence is " + Vector.GetStringFromArray(maxSequence));
+
+            //Matrix.SortMatrixDiagonal(4, Direction.right);
+
+            int [,] matrix = new int[5,5];
+            Matrix.InitRandom(matrix, 1, 2);
+            Matrix.PrintMatrix(matrix);
+
+            
+            Console.WriteLine(Matrix.GetMaxSquare(matrix));
+
+            //Console.WriteLine("Original  " + vector.ToString());
 
         }
     }

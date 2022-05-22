@@ -85,6 +85,7 @@ namespace task3
             Array.Reverse(array);
         }
 
+
         public void InitShufle()
         {
             int r;
@@ -126,8 +127,8 @@ namespace task3
             }
         }
 
-        
 
+        
         public Pair[] CalculateFreq()
         {
             Pair[] pairs = new Pair[0];

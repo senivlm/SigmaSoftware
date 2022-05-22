@@ -6,23 +6,27 @@ namespace task2ex2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Set Lenght of sqrt matrix");
+            Console.WriteLine("Set Lenght of matrix");
             int n= int.Parse(Console.ReadLine());
-            int[,] matrix = new int[n, n];
+
+            Console.WriteLine("Set Hight of matrix");
+            int m = int.Parse(Console.ReadLine());
+
+            int[,] matrix = new int[n, m];
 
             MatrixFiller.FillLikeASnake(matrix);
-            Console.WriteLine("1");
+            Console.WriteLine("Snake");
             PrintMatrix(matrix);
 
             matrix = new int[n, n];
             MatrixFiller.FillLikeADiagonalSnake(matrix);
-            Console.WriteLine("2");
+            Console.WriteLine("Diagonal snake");
             PrintMatrix(matrix);
 
-            matrix = new int[n, n];
+            matrix = new int[n, m];
             MatrixFiller.FillLikeASpiralSnake(matrix);
-           // Console.WriteLine("3");
-           // PrintMatrix(matrix);
+            Console.WriteLine("Spiral snake");
+            PrintMatrix(matrix);
 
         }
         static void PrintMatrix(int[,] matrix)

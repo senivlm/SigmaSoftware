@@ -10,7 +10,7 @@ namespace task2ex2
         public static void FillLikeASnake(int[,] matrix)
         {
             int n = matrix.GetLength(0);
-            int m = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
             int value = 0;
        
             for (int j = 0; j < m; j++)
@@ -78,13 +78,16 @@ namespace task2ex2
             int increment = 1;
 
             matrix[0, 0] = 1;
-            for (int value = 1; value < n * m+1; value++)
+            for (int value = 1; value < n * m; value++)
             {
                 if (turni) {
                     i += increment;
-                    nexti = i + increment; }
+                    nexti = i + increment;
+                    nextj = j;
+                }
                 else {
                     j += increment;
+                    nexti = i;
                     nextj = j + increment;
                 }
 
@@ -102,11 +105,12 @@ namespace task2ex2
                 if (changeturn) {
                     changeturn = false;
                     turni = !turni;
-                    if ((nextj>j)|(nexti<i))
+                    if ((nextj!=j))
                     {
                         increment = -increment;
                     }
                 }
+
                 matrix[i, j] = value + 1;
                 
 

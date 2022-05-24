@@ -5,11 +5,11 @@ namespace test2
 	{
         Product[] data;
         public Storage()
-        {
+        {// так не бажано робити
             data = new Product[5];
         }
         public Product this[int index]
-        {
+        {//Неконтрольований індекс
             get
             {
                 return data[index];
@@ -18,13 +18,13 @@ namespace test2
             {
                 data[index] = value;
             }
-        }
+        }//методи print є помилкові
         public void PrintMeat()
         {
             foreach (Product product in data)
             {
                 if (product != null)
-                {
+                {// операції is, as!
                     if (product.GetType() == typeof(Meat))
                     {
                         Console.WriteLine(product.ToString());

@@ -27,6 +27,11 @@ namespace task3
             //    Console.WriteLine("not Referance Equals");
             //}
 
+            Vector vector = new Vector(100);
+            vector.InitRandom(1, 200);
+            Console.WriteLine("Original  " + vector.ToString());
+            vector.CountingSort();
+            Console.WriteLine("Sorted  " + vector.ToString());
 
             //Vector vector = new Vector(10);
             //vector.InitRandom(1, 2);
@@ -52,13 +57,13 @@ namespace task3
 
             //Matrix.SortMatrixDiagonal(4, Direction.right);
 
-            int [,] matrix = new int[15,15];
-            Matrix.InitRandom(matrix, 1, 2);
-            Console.WriteLine("for ");
+            //int[,] matrix = new int[15,15];
+            //Matrix.InitRandom(matrix, 1, 2);
+            //Console.WriteLine("for ");
             
-            Matrix.PrintMatrix(matrix);
+            //Matrix.PrintMatrix(matrix);
 
-            Console.WriteLine("Maximum square = " + Matrix.GetMaxSquare(matrix));
+            //Console.WriteLine("Maximum square = " + Matrix.GetMaxSquare(matrix));
 
             //Console.WriteLine("Original  " + vector.ToString());
 

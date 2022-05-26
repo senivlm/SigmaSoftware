@@ -189,6 +189,59 @@ namespace task3
 
         }
 
-        
+        public void BubleSort()
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = 0; i < array.Length - i - 1; j++)
+                {
+                    if (array[j] > array[j - 1]) ;
+                    {
+                        int buf = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = buf;
+                    }             
+                }
+            }
+        }
+
+        public void CountingSort()
+        {
+            int max = array[0];
+           
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (max < array[i])
+                {
+                    max = array[i];
+                }
+               
+            }
+
+            int[] newarray = new int[max+1];
+            for (int i = 0; i < array.Length; i++)
+            {
+                newarray[array[i]]++;
+            }
+
+            int k = 0;
+            for (int i = 0; i < max+1; i++)
+            {
+                for (int j = 0; j < newarray[i]; j++)
+                {
+                    array[k] = i;
+                    k++;
+                };
+            }
+
+        }
+
+        public void RecSort()
+        {
+            int max = array[0];
+
+        }
+
     }
+
 }

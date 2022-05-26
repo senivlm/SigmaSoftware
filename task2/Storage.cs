@@ -8,6 +8,7 @@ namespace test2
         {
             data = new Product[5];
         }
+
         public Product this[int index]
         {
             get

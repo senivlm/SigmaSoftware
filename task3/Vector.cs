@@ -236,6 +236,81 @@ namespace task3
 
         }
 
+        //int Partition(int[] array, int minIndex, int maxIndex)
+        //{
+        //    int buf;
+        //    int pivot = minIndex - 1;
+        //    for (int i = minIndex; i < maxIndex; i++)
+        //    {
+        //        if (array[i] < array[maxIndex])
+        //        {
+        //            pivot++;
+        //            buf = array[pivot];
+        //            array[pivot] = array[i];
+        //            array[i] = buf;
+        //        }
+        //    }
+
+        //    buf = array[pivot];
+        //    array[pivot] = array[maxIndex];
+        //    array[maxIndex] = buf;
+        //    return pivot;
+        //}
+
+        //private void QuickSort(int[] array , int minIndex, int maxIndex)
+        //{
+        //    if (minIndex < maxIndex)
+        //    {
+        //     int pivotIndex = Partition(array, minIndex, maxIndex);
+        //     QuickSort(array, minIndex, pivotIndex - 1);
+        //     QuickSort(array, pivotIndex + 1, maxIndex);
+        //    }
+        //}
+
+        static void Swap(ref int x, ref int y)
+        {
+            var t = x;
+            x = y;
+            y = t;
+        }
+
+        int Partition(int[] array, int minIndex, int maxIndex)
+        {
+            int buf;
+            int pivot = minIndex - 1;
+            for (int i = minIndex; i < maxIndex; i++)
+            {
+                if (array[i] < array[maxIndex])
+                {
+                    pivot++;
+                    buf = array[pivot];
+                    array[pivot] = array[i];
+                    array[i] = buf;
+                }
+            }
+            pivot++;
+            buf = array[pivot];
+            array[pivot] = array[maxIndex];
+            array[maxIndex] = buf;
+            return pivot;
+        }
+
+        void QuickSort(int[] array, int minIndex, int maxIndex)
+        {
+            if (minIndex < maxIndex)
+            {
+                var pivotIndex = Partition(array, minIndex, maxIndex);
+                QuickSort(array, minIndex, pivotIndex - 1);
+                QuickSort(array, pivotIndex + 1, maxIndex);
+            }
+            
+        }
+
+        public void QuickSort()
+        {
+            QuickSort(array, 0, array.Length - 1);
+        }
+
         public void RecSort()
         {
             int max = array[0];

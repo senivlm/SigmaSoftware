@@ -27,10 +27,10 @@ namespace task3
             //    Console.WriteLine("not Referance Equals");
             //}
 
-            Vector vector = new Vector(5);
+            Vector vector = new Vector(50);
             vector.InitRandom(1, 200);
             Console.WriteLine("Original  " + vector.ToString());
-            vector.QuickSort();
+            vector.SplitMergSort();
             Console.WriteLine("Sorted  " + vector.ToString());
 
             //Vector vector = new Vector(10);

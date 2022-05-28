@@ -35,10 +35,9 @@ namespace task3
                         j1--;
                     }
                 }
-                
             }
-           
         }
+
 
 
 

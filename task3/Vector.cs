@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+
 namespace task3
 {
     public class Vector
@@ -16,14 +18,14 @@ namespace task3
             Random generator = new Random();
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = generator.Next(a, b+1);
+                array[i] = generator.Next(a, b + 1);
             }
         }
 
         public static bool IsPolindrom(int[] arr)
         {
-            bool result = arr.Length>0;
-            for (int i = 0; i < arr.Length/2; i++)
+            bool result = arr.Length > 0;
+            for (int i = 0; i < arr.Length / 2; i++)
             {
                 if (arr[i] != arr[arr.Length - i - 1]) {
                     result = false;
@@ -53,10 +55,10 @@ namespace task3
                     else { break; }
                 }
                 if (maxvalue < curvalue)
-                    {
+                {
                     index = i;
                     maxvalue = curvalue;
-                    };
+                };
             }
 
             int[] result = new int[maxvalue];
@@ -128,7 +130,7 @@ namespace task3
         }
 
 
-        
+
         public Pair[] CalculateFreq()
         {
             Pair[] pairs = new Pair[0];
@@ -183,7 +185,7 @@ namespace task3
                 {
                     result = result + ',';
                 }
-                
+
             }
             return result;
 
@@ -200,7 +202,7 @@ namespace task3
                         int buf = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = buf;
-                    }             
+                    }
                 }
             }
         }
@@ -208,24 +210,24 @@ namespace task3
         public void CountingSort()
         {
             int max = array[0];
-           
+
             for (int i = 1; i < array.Length; i++)
             {
                 if (max < array[i])
                 {
                     max = array[i];
                 }
-               
+
             }
 
-            int[] newarray = new int[max+1];
+            int[] newarray = new int[max + 1];
             for (int i = 0; i < array.Length; i++)
             {
                 newarray[array[i]]++;
             }
 
             int k = 0;
-            for (int i = 0; i < max+1; i++)
+            for (int i = 0; i < max + 1; i++)
             {
                 for (int j = 0; j < newarray[i]; j++)
                 {
@@ -236,46 +238,14 @@ namespace task3
 
         }
 
-        //int Partition(int[] array, int minIndex, int maxIndex)
-        //{
-        //    int buf;
-        //    int pivot = minIndex - 1;
-        //    for (int i = minIndex; i < maxIndex; i++)
-        //    {
-        //        if (array[i] < array[maxIndex])
-        //        {
-        //            pivot++;
-        //            buf = array[pivot];
-        //            array[pivot] = array[i];
-        //            array[i] = buf;
-        //        }
-        //    }
 
-        //    buf = array[pivot];
-        //    array[pivot] = array[maxIndex];
-        //    array[maxIndex] = buf;
-        //    return pivot;
-        //}
 
-        //private void QuickSort(int[] array , int minIndex, int maxIndex)
-        //{
-        //    if (minIndex < maxIndex)
-        //    {
-        //     int pivotIndex = Partition(array, minIndex, maxIndex);
-        //     QuickSort(array, minIndex, pivotIndex - 1);
-        //     QuickSort(array, pivotIndex + 1, maxIndex);
-        //    }
-        //}
 
-        static void Swap(ref int x, ref int y)
+
+
+        int PartitionMax(int[] array, int minIndex, int maxIndex)
         {
-            var t = x;
-            x = y;
-            y = t;
-        }
-
-        int Partition(int[] array, int minIndex, int maxIndex)
-        {
+            //pivot max
             int buf;
             int pivot = minIndex - 1;
             for (int i = minIndex; i < maxIndex; i++)
@@ -295,15 +265,45 @@ namespace task3
             return pivot;
         }
 
+        int PartitionMin(int[] array, int minIndex, int maxIndex)
+        {
+            //pivot min
+            int buf;
+            int pivot = minIndex;
+            int left = minIndex;
+            int right = maxIndex;
+            while (left < right)
+            {
+                if (array[left] > array[pivot])
+                {
+                    while (array[right] > array[pivot] & array[right] < array[left])
+                    {
+                        right--;
+                        if (right <= left) { break; }
+                    }
+                    buf = array[right];
+                    array[right] = array[left];
+                    array[left] = buf;
+                }
+                left++;
+
+            }
+            buf = array[right];
+            array[right] = array[pivot];
+            array[pivot] = buf;
+            pivot = right;
+            return pivot;
+        }
+
         void QuickSort(int[] array, int minIndex, int maxIndex)
         {
             if (minIndex < maxIndex)
             {
-                var pivotIndex = Partition(array, minIndex, maxIndex);
+                var pivotIndex = PartitionMin(array, minIndex, maxIndex);
                 QuickSort(array, minIndex, pivotIndex - 1);
                 QuickSort(array, pivotIndex + 1, maxIndex);
             }
-            
+
         }
 
         public void QuickSort()
@@ -315,6 +315,63 @@ namespace task3
         {
             int max = array[0];
 
+        }
+
+        public void marge(int left, int q, int right)
+        {
+            bool change = true;
+            while (change)
+            {
+                change = false;
+                for (int i = left; i <= q; i++)
+                {
+                    for (int j = right; j > q; j--)
+                    {
+                        if (array[i] > array[j])
+                        {
+                            int buf = array[j];
+
+                            array[j] = array[i];
+
+                            array[i] = buf;
+
+                            change = true;
+                            i = q;
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void marge2(int l, int q, int r)
+        {
+            int i = l, j = q + 1;
+            int[] temp = new int[r - l + 1];
+            bool change = true;
+
+        }
+
+        public void ReadFileName(String filename)
+        {
+            StreamReader reader = new StreamReader(filename);
+            String filetext = reader.ReadToEnd();
+        }
+
+        public void SplitMergSort()
+        {
+            SplitMergSort(0, array.Length-1);
+        }
+        private void SplitMergSort(int start, int end)
+            {
+            int middle = (start + end) / 2;
+            if (end > start+1)
+            {
+                SplitMergSort(start, middle);
+                SplitMergSort(middle+1, end);
+            }
+            marge(start, middle, end);
         }
 
     }

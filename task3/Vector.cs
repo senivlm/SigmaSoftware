@@ -163,7 +163,7 @@ namespace task3
         }
 
         public int this[int index]
-        {
+        {//Немає контролю за індексами
             set
             {
                 array[index] = value;
@@ -242,7 +242,7 @@ namespace task3
 
 
 
-
+// Треба 1 метод з параметром індекса опорного елемента
         int PartitionMax(int[] array, int minIndex, int maxIndex)
         {
             //pivot max

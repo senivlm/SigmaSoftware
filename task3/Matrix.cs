@@ -8,7 +8,7 @@ namespace task3
 
         }
         public static void SortMatrixDiagonalMethodFromLesson(int n)
-        {
+        {//заповнення тільки до половини
             int number = 0;
             int[,] arr = new int[n, n];
             for (int line = 0; line < n; line++)
@@ -44,7 +44,7 @@ namespace task3
 
 
         public static void SortMatrixDiagonal(int n, Direction direction)
-        {
+        {//тут теж тільки до половини
             int number = 0;
             int[,] matrix = new int[n, n];
             int increment;
@@ -148,7 +148,7 @@ namespace task3
             int j1 = 0;
             int i2 = 0;
             int j2 = 0;
-
+//для великих матриць дуже затратний. шукайте інший підхід.Динамічне програмування!!!
             for ( i = 0; i < n; i++)
             {
                 for ( j = 0; j < m; j++)

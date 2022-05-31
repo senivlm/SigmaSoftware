@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace task5
 {
@@ -6,7 +7,18 @@ namespace task5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+            Vector vector = new Vector(0);
+            vector.ReadFromFile(@"../../../textvector.txt");
+            Console.WriteLine("Original  " + vector.ToString());
+            vector.SplitMargeSort();
+            Console.WriteLine("SplitMarge Sorted  " + vector.ToString());
+
+            vector.ReadFromFile(@"../../../textvector.txt");
+            Console.WriteLine("Original  " + vector.ToString());
+            vector.PiramidSort();
+            Console.WriteLine("Piramid sorted  " + vector.ToString());
+
         }
     }
 }

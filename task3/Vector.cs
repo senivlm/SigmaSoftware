@@ -358,7 +358,6 @@ namespace task3
         {
             StreamReader reader = new StreamReader(filename);
             String filetext = reader.ReadToEnd();
-            reader
         }
 
         public void SplitMergSort()

@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace task6
 {
-    public class accounting
+    public class Accounting
     {
         Flat[] flats;
         int electricCost;
 
-        public accounting() : this(0)
+        public Accounting() : this(0)
         {
         }
 
-        public accounting(int countFlats)
+        public Accounting(int countFlats)
         {
             flats = new Flat[countFlats];
+        }
+
+        public Accounting(String filename)
+        {
+            ReadFromFile(filename);
         }
 
         public void addFlat(int number, string owner)
@@ -56,14 +62,14 @@ namespace task6
                List<Flat> flatsWhoNotUseEletric = new List<Flat>();
                 foreach (Flat flat in flats)
                 {
-                    if (flat.getBalance() == 0)
+                    if (flat != null && flat.getBalance() == 0)
                     {
                         flatsWhoNotUseEletric.Add(flat);
                     }
                 }
 
                 return flatsWhoNotUseEletric;
-            
+      
         }
 
 
@@ -82,7 +88,30 @@ namespace task6
             return flats[number - 1];
         }
 
+        private void ReadFromFile(String filename)
+        {
+            StreamReader reader = new StreamReader(filename);
+            string[] splited = reader.ReadLine().Split(',');
+            if (splited.Length == 2)
+            {
+                flats = new Flat[int.Parse(splited[0])];
+            }
+            while (!reader.EndOfStream)
+            {
+                splited = reader.ReadLine().Split(',');
+                if (splited.Length == 4)
+                {
+                    int number = int.Parse(splited[0]);
+                    addFlat(number, splited[1]);
+                    DateTime date = DateTime.Parse(splited[2]);
+                    int value = int.Parse(splited[3]);
 
+                    addFlatMetric(number, date, value);
+
+                }
+            }
+            reader.Close();
+        }
 
     }
 }

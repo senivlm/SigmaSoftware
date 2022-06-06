@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace task6
 {
-    class Flat
+    public class Flat
     {
         int number;
         string owner;
@@ -51,6 +51,11 @@ namespace task6
             }
             return balance;
 
+        }
+
+        public override string ToString()
+        {
+            return "#"+number.ToString()+"("+owner+")";
         }
     }
 }

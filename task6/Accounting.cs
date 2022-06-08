@@ -7,7 +7,7 @@ namespace task6
     public class Accounting
     {
         Flat[] flats;
-        int electricCost;
+        int cost;
 
         public Accounting() : this(0)
         {
@@ -18,10 +18,7 @@ namespace task6
             flats = new Flat[countFlats];
         }
 
-        public Accounting(String filename)
-        {
-            ReadFromFile(filename);
-        }
+        
 
         public void addFlat(int number, string owner)
         {
@@ -47,13 +44,22 @@ namespace task6
 
         public int getFlatBalance(int number)
         {
-            if (checkNumber(number))
+            if (!checkNumber(number))
             {
-                if (flatExists(number))
+                throw new ArgumentException("Bad number of flat");
+            }
+            else
+            {
+                if (!flatExists(number))
+                {
+                    throw new ArgumentException("Information about flat not exists");
+                }
+                else
                 {
                     return getFlat(number).getBalance();
                 }
             }
+
             return 0;
         }
 
@@ -72,6 +78,21 @@ namespace task6
       
         }
 
+        public List<Flat> GetAllFlats()
+        {
+            List<Flat> flats = new List<Flat>();
+            foreach (Flat flat in flats)
+            {
+                if (flat != null)
+                {
+                    flats.Add(flat);
+                }
+
+            }
+
+            return flats;
+
+        }
 
         private bool checkNumber(int number)
         {
@@ -88,30 +109,40 @@ namespace task6
             return flats[number - 1];
         }
 
-        private void ReadFromFile(String filename)
+        public int Cost
         {
-            StreamReader reader = new StreamReader(filename);
-            string[] splited = reader.ReadLine().Split(',');
-            if (splited.Length == 2)
-            {
-                flats = new Flat[int.Parse(splited[0])];
+            set {
+                if (value > 0)
+                { cost = value; }
+                else
+                { throw new ArgumentException("Cost mast be greather than zero"); }
             }
-            while (!reader.EndOfStream)
-            {
-                splited = reader.ReadLine().Split(',');
-                if (splited.Length == 4)
-                {
-                    int number = int.Parse(splited[0]);
-                    addFlat(number, splited[1]);
-                    DateTime date = DateTime.Parse(splited[2]);
-                    int value = int.Parse(splited[3]);
-
-                    addFlatMetric(number, date, value);
-
-                }
-            }
-            reader.Close();
         }
+
+        //public void ReadFromFile(String filename)
+        //{
+        //    StreamReader reader = new StreamReader(filename);
+        //    string[] splited = reader.ReadLine().Split(',');
+        //    if (splited.Length == 2)
+        //    {
+        //        flats = new Flat[int.Parse(splited[0])];
+        //    }
+        //    while (!reader.EndOfStream)
+        //    {
+        //        splited = reader.ReadLine().Split(',');
+        //        if (splited.Length == 4)
+        //        {
+        //            int number = int.Parse(splited[0]);
+        //            addFlat(number, splited[1]);
+        //            DateTime date = DateTime.Parse(splited[2]);
+        //            int value = int.Parse(splited[3]);
+
+        //            addFlatMetric(number, date, value);
+
+        //        }
+        //    }
+        //    reader.Close();
+        //}
 
     }
 }

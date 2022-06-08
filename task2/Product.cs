@@ -1,7 +1,7 @@
 ﻿using System;
 namespace test2
 {
-	public class Product
+	public class Product: IComparable
 	{
         public string name { get; set; }
 		public Decimal price { get; set; }
@@ -38,6 +38,20 @@ namespace test2
         {
             return name+" "+price.ToString();
         }
+
+		public int CompareTo(Object obj)
+		{
+			if (obj is Product)
+			{
+				return this.name.CompareTo((obj as Product).name);
+			}
+			else
+			{
+				return -1;
+			}
+			
+		}
+
     }
 }
 

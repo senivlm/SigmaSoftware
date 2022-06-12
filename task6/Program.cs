@@ -37,6 +37,9 @@ namespace task6
                     case "7":
                         SaveFlatMetricsToFile(acc);
                         break;
+                    case "8":
+                        HowManyDayAgoLastMetricsInput(acc);
+                        break;
                     case "q":
                         run = false;
                         break;
@@ -234,6 +237,27 @@ namespace task6
             }
         
 
+            static void HowManyDayAgoLastMetricsInput(Accounting acc)
+            {
+                Console.WriteLine("Input number of flat");
+                try
+                {
+                    int number = int.Parse(Console.ReadLine());
+                    DateTime lastMetric = acc.getFlat(number).getLastMetric();
+                    Console.WriteLine("Last date of metrics - " + lastMetric.ToString("MM/dd/yy") + ", "+ (DateTime.Now - lastMetric).TotalDays+" days ago");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Bad format of flat number");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
+            }
+
             static void DefaultAction()
             {
                 Console.WriteLine("Please, choose variant!");
@@ -249,6 +273,7 @@ namespace task6
                 Console.WriteLine("5 - print flat balance");
                 Console.WriteLine("6 - print all balances");
                 Console.WriteLine("7 - save to file flat metrics");
+                Console.WriteLine("8 - How many day ago last metrics input");
                 Console.WriteLine("q - exit");
             }
         }

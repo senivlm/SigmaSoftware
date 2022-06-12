@@ -59,6 +59,24 @@ namespace task6
             return balance;
 
         }
+        public DateTime getLastMetric()
+        {
+            if (account.Count > 0)
+            {
+                DateTime minDateTime = account[0].Date;
+                foreach (Metric metric in account)
+                {
+                    if (minDateTime > metric.Date)
+                    {
+                        minDateTime = metric.Date;
+                    }
+                }
+                return minDateTime;
+            }
+           
+            throw new ArgumentException("No metrics in this flat!");
+         }
+
 
         public override string ToString()
         {

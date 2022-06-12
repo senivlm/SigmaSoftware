@@ -1,0 +1,6 @@
+#2( Ivanov)
+ cost=0
+period - 01/2022date 01/04/22 - 200
+period - 02/2022date 02/05/22 - 200
+period - 03/2022date 03/06/22 - 200
+Balance = 0

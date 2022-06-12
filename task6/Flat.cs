@@ -28,6 +28,13 @@ namespace task6
             account.Add(newMetric);
         }
 
+
+        public List<Metric> Account
+        {
+            get{ return account;}
+
+        }
+
         public int getBalance()
         {
             int balance = 0;

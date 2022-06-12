@@ -34,6 +34,9 @@ namespace task6
                     case "6":
                         PrintAllBalance(acc);
                         break;
+                    case "7":
+                        SaveFlatMetricsToFile(acc);
+                        break;
                     case "q":
                         run = false;
                         break;
@@ -187,8 +190,49 @@ namespace task6
 
 
             }
-            
-            
+
+            static void SaveFlatMetricsToFile(Accounting acc)
+            {
+                Console.WriteLine("input path:");
+                string path = Console.ReadLine();
+                if (Directory.Exists(path))
+                {
+                    Console.WriteLine("Input number of flat");
+                    try
+                    {
+                        int number = int.Parse(Console.ReadLine());
+
+                        using(StreamWriter writer = new StreamWriter(path+"/"+number+".txt", true))
+                        {
+                         writer.WriteLineAsync(acc.getFlat(number).ToString());
+                         writer.WriteLineAsync(acc.Quartal+" cost="+acc.Cost.ToString());
+
+                            List<Metric> account = acc.getFlat(number).Account;
+                            foreach (Metric metric in account)
+                            {
+                                writer.WriteLineAsync(metric.ToString());
+
+                            }
+
+                            writer.WriteLineAsync("Balance = " + acc.getFlatBalance(number));
+                            Console.WriteLine("Saving successful!");
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Bad format of flat number");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("dirctory not exists");
+                }
+            }
+        
 
             static void DefaultAction()
             {
@@ -204,6 +248,7 @@ namespace task6
                 Console.WriteLine("4 - find flat who not use electic");
                 Console.WriteLine("5 - print flat balance");
                 Console.WriteLine("6 - print all balances");
+                Console.WriteLine("7 - save to file flat metrics");
                 Console.WriteLine("q - exit");
             }
         }

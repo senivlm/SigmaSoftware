@@ -60,5 +60,11 @@ namespace task6
 
             
         }
+
+        public override string ToString()
+        {
+            return "period - "+period.ToString("MM/yyyy")+ ", date "+ date.ToString("MM/dd/yy")+" - "+ value;
+
+        }
     }
 }

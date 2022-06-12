@@ -7,6 +7,7 @@ namespace task6
     public class Accounting
     {
         Flat[] flats;
+        String quartal;
         int cost;
 
         public Accounting() : this(0)
@@ -18,7 +19,12 @@ namespace task6
             flats = new Flat[countFlats];
         }
 
-        
+
+        public string Quartal
+        {
+            get{ return quartal;}
+            set{ quartal = value; }
+        }
 
         public void addFlat(int number, string owner)
         {
@@ -104,13 +110,14 @@ namespace task6
             return flats[number - 1] != null;
         }
 
-        private Flat getFlat(int number)
+        public Flat getFlat(int number)
         {
             return flats[number - 1];
         }
 
         public int Cost
         {
+            get { return cost; }
             set {
                 if (value > 0)
                 { cost = value; }
@@ -118,31 +125,6 @@ namespace task6
                 { throw new ArgumentException("Cost mast be greather than zero"); }
             }
         }
-
-        //public void ReadFromFile(String filename)
-        //{
-        //    StreamReader reader = new StreamReader(filename);
-        //    string[] splited = reader.ReadLine().Split(',');
-        //    if (splited.Length == 2)
-        //    {
-        //        flats = new Flat[int.Parse(splited[0])];
-        //    }
-        //    while (!reader.EndOfStream)
-        //    {
-        //        splited = reader.ReadLine().Split(',');
-        //        if (splited.Length == 4)
-        //        {
-        //            int number = int.Parse(splited[0]);
-        //            addFlat(number, splited[1]);
-        //            DateTime date = DateTime.Parse(splited[2]);
-        //            int value = int.Parse(splited[3]);
-
-        //            addFlatMetric(number, date, value);
-
-        //        }
-        //    }
-        //    reader.Close();
-        //}
 
     }
 }

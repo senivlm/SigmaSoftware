@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace task6
+namespace task8
 {
     public class Accounting
     {
@@ -19,6 +19,10 @@ namespace task6
             flats = new Flat[countFlats];
         }
 
+        public Accounting(Flat[] flats)
+        {
+            this.flats = flats;
+        }
 
         public string Quartal
         {
@@ -124,6 +128,38 @@ namespace task6
                 else
                 { throw new ArgumentException("Cost mast be greather than zero"); }
             }
+        }
+
+        public static Accounting operator +(Accounting ac1, Accounting ac2)
+        {
+            List<Flat> flats = ac1.GetAllFlats();
+            foreach (Flat flat in ac2.GetAllFlats())
+            {
+                if (!flats.Contains(flat))
+                {
+                    flats.Add(flat);
+                }
+            }
+            Accounting result = new Accounting(flats.ToArray());
+            result.Cost = ac1.Cost;
+            result.Quartal = ac1.Quartal;
+            return result;
+        }
+
+        public static Accounting operator -(Accounting ac1, Accounting ac2)
+        {
+            List<Flat> flats = ac1.GetAllFlats();
+            foreach (Flat flat in ac2.GetAllFlats())
+            {
+                if (flats.Contains(flat))
+                {
+                    flats.Remove(flat);
+                }
+            }
+            Accounting result = new Accounting(flats.ToArray());
+            result.Cost = ac1.Cost;
+            result.Quartal = ac1.Quartal;
+            return result;
         }
 
     }

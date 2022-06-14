@@ -17,6 +17,8 @@ namespace task6
         public Accounting(int countFlats)
         {
             flats = new Flat[countFlats];
+            //Не повністю ініціалізовані дані.
+            //Треба ініціювати кожну квартиру.
         }
 
 
@@ -73,7 +75,7 @@ namespace task6
         {
                List<Flat> flatsWhoNotUseEletric = new List<Flat>();
                 foreach (Flat flat in flats)
-                {
+                {//Користуйтесь ?
                     if (flat != null && flat.getBalance() == 0)
                     {
                         flatsWhoNotUseEletric.Add(flat);

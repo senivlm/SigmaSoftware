@@ -5,7 +5,7 @@ using System.Text;
 namespace task6ex2
 {
     public class Sentence
-    {
+    {// молодець, що зберіг розділюючий знак в кінці речення!
         private string sentence;
         static List<char> endOfSentance = new List<char> { '!', '.', '?' };
         static List<char> ignored = new List<char> { '\n', '\r'};

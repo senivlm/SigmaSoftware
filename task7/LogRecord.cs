@@ -6,7 +6,7 @@ namespace task7
     {
         DateTime date;
         string message;
-
+//Яка з нього користь?
         public LogRecord() : this("")
         { }
 

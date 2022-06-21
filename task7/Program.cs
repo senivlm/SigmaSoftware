@@ -5,7 +5,7 @@ using System.IO;
 namespace task7
 {
     class Program
-    {
+    {//молодець.
         static void Main(string[] args)
         {
             DateTime programStart = DateTime.Now;

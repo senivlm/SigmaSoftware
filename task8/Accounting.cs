@@ -131,7 +131,7 @@ namespace task8
         }
 
         public static Accounting operator +(Accounting ac1, Accounting ac2)
-        {
+        {// нормальні герої завжди ідуть в обхід! Затратно
             List<Flat> flats = ac1.GetAllFlats();
             foreach (Flat flat in ac2.GetAllFlats())
             {

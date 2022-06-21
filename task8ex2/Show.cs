@@ -8,7 +8,7 @@ namespace task8ex2
             try
             {
                 AccessLog log = new AccessLog();
-                Initializer.FillLAccessLogFromFile(log, @"../../../iplog.txt");
+                Initializer.FillLAccessLogFromFile(log, @"../../../Iplog.txt");
                 LogChecker logChecker = new LogChecker(log);
                 Console.WriteLine("Most popular day of week is " + logChecker.Getpopulardayofweek());
                 Console.WriteLine("Most popular hour is " + logChecker.GetpopularHour());

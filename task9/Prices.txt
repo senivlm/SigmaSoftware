@@ -1,0 +1,9 @@
+﻿Eggs - 70
+porc - 150
+tomatos - 30
+beaf - 200
+onion - 10
+carrot - 15
+cacao - 300
+sugar - 30
+melt - 17

@@ -1,0 +1,46 @@
+﻿type name of dish:
+-Breakfest
+-Lunch
+-Cacao
+-Pancake
+[ENTERED] - "Lunch"
+type count of Lunch:
+[ENTERED] - "3"
+type name of dish:
+-Breakfest
+-Lunch
+-Cacao
+-Pancake
+[ENTERED] - "Cacao"
+type count of Cacao:
+[ENTERED] - "2"
+type name of dish:
+-Breakfest
+-Lunch
+-Cacao
+-Pancake
+[ENTERED] - "Pancake"
+type count of Pancake:
+[ENTERED] - "1"
+type name of dish:
+-Breakfest
+-Lunch
+-Cacao
+-Pancake
+[ENTERED] - "q"
+order stopped
+type price for "water"(have trys =2):
+[ENTERED] - "qwerty"
+type price for "water"(have trys =1):
+[ENTERED] - "1"
+type price for "potato"(have trys =2):
+[ENTERED] - "10"
+type price for "egg"(have trys =2):
+[ENTERED] - "70"
+Cost in UAH = 171.05
+type currency you wish to convert:
+-usd
+-eur
+-gbp
+[ENTERED] - "eur"
+Conseting cost = 5.03

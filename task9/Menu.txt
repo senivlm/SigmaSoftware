@@ -1,0 +1,22 @@
+﻿Breakfest
+Eggs , 300
+porc , 100
+tomatos, 100
+
+Lunch
+water , 300
+potato, 200
+beaf, 200
+onion, 50
+carrot, 70
+
+Cacao
+water , 200
+cacao, 50
+sugar, 20
+
+Pancake
+water, 100
+egg, 50
+sugar, 30
+melt, 200

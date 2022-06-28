@@ -89,7 +89,7 @@ namespace task10ex2
         }
 
 
-
+// про цю частину я окремо розкажу на занятті
         public IEnumerator GetEnumeratorDiagonl()
         {
             int n = matrix.GetLength(1);

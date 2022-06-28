@@ -90,6 +90,7 @@ namespace task10
         {
             string result = "";
             char delimiter = ' ';
+            //Не буде враховано довільну кількість пропусків між словами
             var words = text.Split(delimiter);
             foreach (string word in words)
             {

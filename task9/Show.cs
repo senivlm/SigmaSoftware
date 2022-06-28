@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace task9
-{
+{// Клас трішки не відповідає назві та принципам Solid
     public class Show
     {
         public static void Run()

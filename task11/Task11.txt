@@ -1,0 +1,6 @@
+06/12/2022 16:01:52;logtext1
+06/12/2022 16:02:05;logtext1
+06/12/2022 16:02:17;logtext1
+06/12/2022 16:32:02;bad product string - Gold_Beef
+06/12/2022 16:32:02;bad product string - Paper Paper Paper Paper Paper
+06/12/2022 16:32:02;bad product string - gold_Pork 101 Day Day

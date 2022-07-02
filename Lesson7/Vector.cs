@@ -1,18 +1,17 @@
 ﻿using System;
 using System.IO;
 
-namespace task3
+namespace Lesson7
 {
     public class Vector
     {
-        int[] array;
+        private int[] array;
 
 
         public Vector(int n)
         {
             array = new int[n];
         }
-
 
         public void InitRandom(int a, int b)
         {
@@ -354,26 +353,161 @@ namespace task3
 
         }
 
-        public void ReadFileName(String filename)
+        public void ReadFromFile(String filename)
         {
             StreamReader reader = new StreamReader(filename);
-            String filetext = reader.ReadToEnd();
+            string[] splited = reader.ReadToEnd().Split(',');
+            array = new int[splited.Length];
+            for (int i = 0; i < splited.Length; i++)
+            {
+                array[i] = int.Parse(splited[i]);
+            }
         }
 
-        public void SplitMergSort()
+        public void SplitMargeSort()
         {
-            SplitMergSort(0, array.Length-1);
+            SplitMargeSort(0, array.Length - 1);
         }
-        private void SplitMergSort(int start, int end)
-            {
+        private void SplitMargeSort(int start, int end)
+        {
             int middle = (start + end) / 2;
-            if (end > start+1)
+            if (end > start + 1)
             {
-                SplitMergSort(start, middle);
-                SplitMergSort(middle+1, end);
+                SplitMargeSort(start, middle);
+                SplitMargeSort(middle + 1, end);
             }
             marge(start, middle, end);
         }
+
+        public void PiramidSort()
+        {
+            int n = array.Length;
+
+            for (int i = n / 2 - 1; i >= 0; i--)
+                puttoheap(array, n, i);
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                int temp = array[0];
+                array[0] = array[i];
+                array[i] = temp;
+
+                puttoheap(array, i, 0);
+            }
+        }
+
+        void puttoheap(int[] arr, int n, int i)
+        {
+            int max = i;
+            int l = 2 * i + 1;
+            int r = 2 * i + 2;
+
+            if (l < n && arr[l] > arr[max])
+                max = l;
+
+            if (r < n && arr[r] > arr[max])
+                max = r;
+
+            if (max != i)
+            {
+                int temp = arr[i];
+                arr[i] = arr[max];
+                arr[max] = temp;
+
+                puttoheap(arr, n, max);
+            }
+        }
+
+        public int summa()
+        {
+            int summa = 0;
+            foreach (int i in array)
+            {
+                summa += i;
+            }
+            return summa;
+        }
+
+        public static bool operator >(Vector a, Vector b)
+        {
+            return a.array.Length > b.array.Length;
+        }
+
+        public static bool operator <(Vector a, Vector b)
+        {
+            return a.array.Length < b.array.Length;
+        }
+
+
+
+        public static Vector operator+(Vector a, int b)
+        {
+            Vector c = new Vector(a.array.Length);
+            for (int i = 0; i < a.array.Length; i++)
+            {
+                c.array[i] = a.array[i] + b;
+            }
+            return c;
+        }
+
+        public static implicit operator Vector(int i)
+        {
+            Vector a = new Vector(1);
+            a[0] = i;
+            return a;
+        }
+
+        public static implicit operator int(Vector a)
+        {
+            return a[0];
+        }
+
+        public static int operator+(Vector a, Vector b) 
+        {
+            return a.summa() + b.summa();
+        }
+
+        //public static Vector operator+(Vector a, Vector b) 
+        //{
+           
+        //    if (a.array.Length > b.array.Length)
+        //    {
+        //        (a,b) = (b,a);
+        //    }
+            
+        //    Vector c = new Vector(b.array.Length);
+
+        //    for (int i = 0; i < a.array.Length; i++)
+        //    {
+        //        c.array[i] = a.array[i]+ b.array[i];
+        //    }
+
+        //    for (int i = a.array.Length; i < b.array.Length; i++)
+        //    {
+        //        c.array[i] = b.array[i];
+        //    }
+        //    return c;
+
+        //    //for (int i = 0; i < a.array.Length; i++)
+        //    //{
+        //    //    c.array[i] += a.array[i];
+        //    //}
+
+        //    //for (int i = 0; i < b.array.Length; i++)
+        //    //{
+        //    //    c.array[i] += b.array[i];
+        //    //}
+
+        //    //for (int i = 0; i < lengthRes; i++)
+        //    //{
+        //    //    if (a.array.Length > i)
+        //    //    { c.array[i] += a.array[i]; }
+
+        //    //    if (b.array.Length > i)
+        //    //    { c.array[i] += b.array[i]; }
+        //    //}
+
+        //}
 
     }
 

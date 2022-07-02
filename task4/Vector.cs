@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace task3
+namespace task4
 {
     public class Vector
     {
@@ -12,7 +12,6 @@ namespace task3
         {
             array = new int[n];
         }
-
 
         public void InitRandom(int a, int b)
         {
@@ -266,41 +265,11 @@ namespace task3
             return pivot;
         }
 
-        int PartitionMin(int[] array, int minIndex, int maxIndex)
-        {
-            //pivot min
-            int buf;
-            int pivot = minIndex;
-            int left = minIndex;
-            int right = maxIndex;
-            while (left < right)
-            {
-                if (array[left] > array[pivot])
-                {
-                    while (array[right] > array[pivot] & array[right] < array[left])
-                    {
-                        right--;
-                        if (right <= left) { break; }
-                    }
-                    buf = array[right];
-                    array[right] = array[left];
-                    array[left] = buf;
-                }
-                left++;
-
-            }
-            buf = array[right];
-            array[right] = array[pivot];
-            array[pivot] = buf;
-            pivot = right;
-            return pivot;
-        }
-
         void QuickSort(int[] array, int minIndex, int maxIndex)
         {
             if (minIndex < maxIndex)
             {
-                var pivotIndex = PartitionMin(array, minIndex, maxIndex);
+                var pivotIndex = PartitionMax(array, minIndex, maxIndex);
                 QuickSort(array, minIndex, pivotIndex - 1);
                 QuickSort(array, pivotIndex + 1, maxIndex);
             }

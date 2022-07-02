@@ -1,0 +1,8 @@
+﻿Gold_Beef_2 101 XO Beef
+Gold_Beef_2
+Paper 110
+Paper Paper Paper Paper Paper
+Milk 113 Weak
+Bread2 111 Day
+gold_Pork_2 101 Day Day
+gold_Pork_2 101 VVSOP Pork

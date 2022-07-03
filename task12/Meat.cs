@@ -1,5 +1,5 @@
 ﻿using System;
-namespace task11
+namespace task12
 {
 	public class Meat:Product
 	{

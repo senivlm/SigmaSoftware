@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace task11
+namespace task12
 {
+
+    public delegate void DailyProductAddHandler(Product product);
+
     public class Storage
     {
         List<Product> products;
+        public DailyProductAddHandler OnAddDailyProduc;
+        public static Term CriticalTermOfStorage = Term.Weak;
         public Storage()
         {
             products = new List<Product>();
@@ -25,6 +30,7 @@ namespace task11
             {
                 if (products.Count > index && index >= 0)
                 {
+                    CheckProductAndInvocOfDayly(value);
                     products[index] = value;
                 }
                 else
@@ -43,6 +49,7 @@ namespace task11
         {
             if (product is Product)
             {
+                CheckProductAndInvocOfDayly(product);
                 products.Add(product);
             }
             else
@@ -51,7 +58,14 @@ namespace task11
             }
         }
 
-        
+        private void CheckProductAndInvocOfDayly(Product product)
+        {
+            if (product is DailyProduct)
+             {
+                OnAddDailyProduc.Invoke(product);
+             }
+        }
+
         public List<Product> GetMeat()
         {
             return GetProductsByType(typeof(Meat));

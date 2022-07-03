@@ -1,5 +1,5 @@
 ﻿using System;
-namespace task11
+namespace task12
 {
     public class Product : IComparable
     {
@@ -60,6 +60,8 @@ namespace task11
             }
 
         }
+
+
 
     }
 }

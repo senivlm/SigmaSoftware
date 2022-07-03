@@ -1,5 +1,5 @@
 ﻿using System;
-namespace task11
+namespace task12
 {
 	public enum Term
 	{
@@ -8,5 +8,7 @@ namespace task11
 		Month = 30,
 		Year = 365
 	}
+
+	 
 }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace task7
+namespace task11
 {
     public class LogRecord
     {

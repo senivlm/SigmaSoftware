@@ -1,19 +1,20 @@
 ﻿using System;
-namespace task11
+namespace task12
 {
-	public class DailyProduct:Product
+	public class DailyProduct : Product
 	{
 		private Term term;
 
 		public DailyProduct() : this(default, default, default) { }
 
-		public DailyProduct(string name, decimal price, Term term):base(name, price)
+		public DailyProduct(string name, decimal price, Term term) : base(name, price)
 		{
 			this.term = term;
 
 		}
 
-
+		public Term Term => term;
+	
 		public override void IncrisePrice(int Percent)
 		{
 			price = Math.Round(price * (100 + Percent + Values.PersentOfTerm(term))/ 100, 2);

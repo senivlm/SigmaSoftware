@@ -28,6 +28,12 @@ namespace task12
                         }
                     }
                 }
+
+            
+            List<Product> productsWithLongTerm = storage.SelectSome(x => x is DailyProduct && ((DailyProduct)x).Term > Storage.CriticalTermOfStorage);
+            List<Product> meatAtStorage = storage.SelectSome(x => x is Meat);
+
+
         }
 
         public static void CheckAndPrintMessageIfDayliProductIsCriticalTerm(Product product)

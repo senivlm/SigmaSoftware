@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace task12
 {
@@ -85,6 +86,12 @@ namespace task12
                 }
             }
             return result;
+        }
+
+
+        public List<Product> SelectSome(Func<Product, bool> predicate)
+        {
+            return products.Where(predicate).ToList();
         }
 
 

@@ -6,7 +6,7 @@ namespace Task12ex2
 {
     public class Calculator
     {
-        private  List<string> alowwedOperators;
+        private List<string> alowwedOperators;
         private char delimiter;
         private char finishChar;
         private char bracketBegin;
@@ -30,12 +30,6 @@ namespace Task12ex2
         }
 
 
-        public static double calc(string calcstring)
-        {
-           string[] members =calcstring.Split();
-            return 0;
-        }
-
         private int GetPriority(string s)
         {
             switch (s)
@@ -54,30 +48,30 @@ namespace Task12ex2
             }
         }
 
-        public string getRPN(string calcstring)
+        public string GetRPN(string calcstring)
         {
             string output = "";
             Stack<string> operStack = new Stack<string>();
             int stringLength = calcstring.Length;
 
-            for (int i = 0; i < stringLength; i++) 
+            for (int i = 0; i < stringLength; i++)
             {
-                
+
                 if (IsDelimeter(calcstring[i]))
                     continue;
 
 
-               if (Char.IsDigit(calcstring[i]))
-               { 
-                while (i < stringLength && Char.IsDigit(calcstring[i]) )
+                if (Char.IsDigit(calcstring[i]))
+                {
+                    while (i < stringLength && Char.IsDigit(calcstring[i]))
                     {
-                        output += calcstring[i]; 
-                        i++; 
+                        output += calcstring[i];
+                        i++;
                     }
 
-                   output += delimiter; 
-                   i--;
-                   continue;
+                    output += delimiter;
+                    i--;
+                    continue;
                 }
 
                 if (!Char.IsDigit(calcstring[i]))
@@ -99,86 +93,165 @@ namespace Task12ex2
                         }
                     }
                     string oper = sb.ToString();
-                    
-                   
+
+
                     if (alowwedOperators.Contains(oper))
                     {
-                        if (oper.Equals(bracketBegin.ToString())) 
-                            operStack.Push(oper); 
-                        else if (oper.Equals(bracketEnd.ToString())) 
+                        if (oper.Equals(bracketBegin.ToString()))
+                            operStack.Push(oper);
+                        else if (oper.Equals(bracketEnd.ToString()))
                         {
                             string s = operStack.Pop();
                             while (!s.Equals(bracketBegin.ToString()))
                             {
                                 output += s + delimiter;
                                 if (operStack.Count == 0)
-                                   break;
-                                   
+                                    break;
+
                                 s = operStack.Pop();
 
                             }
                         }
-                        else 
+                        else
                         {
-                            if (operStack.Count > 0) 
-                                if (GetPriority(oper) <= GetPriority(operStack.Peek())) 
-                                    output += operStack.Pop() + delimiter; 
+                            if (operStack.Count > 0)
+                                if (GetPriority(oper) <= GetPriority(operStack.Peek()))
+                                    output += operStack.Pop() + delimiter;
 
-                            operStack.Push(oper); 
+                            operStack.Push(oper);
 
                         }
                     }
                 }
             }
-            
+
 
             while (operStack.Count > 0)
                 output += operStack.Pop() + delimiter;
 
-            return output; //Возвращаем выражение в постфиксной записи
+            return output;
         }
-    }
 
-    public double CalcRPN(string input)
-    {
-        double result = 0; 
-        Stack<double> temp = new Stack<double>(); 
-
-        for (int i = 0; i < input.Length; i++)
+        public double CalcRPN(string input)
         {
-            //Если символ - цифра, то читаем все число и записываем на вершину стека
-            if (Char.IsDigit(input[i]))
+            double result = 0;
+            Stack<double> temp = new Stack<double>();
+            int stringLength = input.Length;
+            for (int i = 0; i < stringLength; i++)
             {
-                string a = string.Empty;
 
-                while (!IsDelimeter(input[i]) && !IsOperator(input[i])) //Пока не разделитель
+                StringBuilder sb = new StringBuilder();
+                if (IsDelimeter(input[i]))
                 {
-                    a += input[i]; //Добавляем
-                    i++;
-                    if (i == input.Length) break;
+                    sb.Append(input[i]);
                 }
-                temp.Push(double.Parse(a)); //Записываем в стек
-                i--;
-            }
-            else if (IsOperator(input[i])) //Если символ - оператор
-            {
-                //Берем два последних значения из стека
-                double a = temp.Pop();
-                double b = temp.Pop();
+                else
+                {
+                    if (Char.IsDigit(input[i]))
+                    {
+                        while (i < stringLength && Char.IsDigit(input[i]))
+                        {
+                            sb.Append(input[i]);
+                            i++;
+                        }
 
-                switch (input[i]) //И производим над ними действие, согласно оператору
-                {
-                    case '+': result = b + a; break;
-                    case '-': result = b - a; break;
-                    case '*': result = b * a; break;
-                    case '/': result = b / a; break;
-                    case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        i--;
+                    }
+                    else
+                    {
+                        sb.Append(input[i]);
+                        if (!alowwedOperators.Contains(sb.ToString()))
+                        {
+                            while (i < stringLength - 1
+                            && !Char.IsDigit(input[i + 1])
+                            && !IsDelimeter(input[i + 1]))
+                            {
+                                if (alowwedOperators.Contains(input[i + 1].ToString()))
+                                {
+                                    break;
+                                }
+                                sb.Append(input[i + 1]);
+                                i++;
+                            }
+                        }
+
+                    }
                 }
-                temp.Push(result); //Результат вычисления записываем обратно в стек
+                string oper = sb.ToString();
+                double d = 0;
+                if (Double.TryParse(sb.ToString(), out d))
+                {
+                    temp.Push(d);
+                }
+                else if (alowwedOperators.Contains(sb.ToString()))
+                {
+
+                    switch (sb.ToString())
+                    {
+                        case "+":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                double b = temp.Count > 0 ? temp.Pop() : 0;
+                                result = b + a; break;
+                            }
+                        case "-":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                double b = temp.Count > 0 ? temp.Pop() : 0;
+                                result = b - a; break;
+                            }
+                        case "*":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                double b = temp.Count > 0 ? temp.Pop() : 0;
+                                result = b * a;
+                                break;
+                            }
+                        case "/":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                double b = temp.Count > 0 ? temp.Pop() : 0;
+                                result = b / a;
+                                break;
+                            }
+                        case "^":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                double b = temp.Count > 0 ? temp.Pop() : 0;
+                                result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString());
+                                break;
+                            }
+
+                        case "cos":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                result = Math.Cos(Math.PI * a / 180.0);
+                                break;
+                            }
+
+                        case "sin":
+                            {
+                                double a = temp.Count > 0 ? temp.Pop() : 0;
+                                result = Math.Sin(Math.PI * a / 180.0);
+                                break;
+                            };
+                        case "log":
+                            {
+                                {
+                                    double a = temp.Count > 0 ? temp.Pop() : 0;
+                                    result = Math.Log10(a);
+                                    break;
+                                }
+                            }
+
+                    }
+                    temp.Push(result);
+                }
             }
+            return temp.Peek();
         }
-        return temp.Peek(); 
-    }
 
+    }
 }
+
 

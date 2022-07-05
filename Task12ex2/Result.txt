@@ -1,0 +1,4 @@
+log(cos(2-2)*40+10+50*sin(60+30))=
+transformed to RPN
+2 2 - cos 40 * 10 + 50 60 30 + sin * + log 
+Result = 2

@@ -8,11 +8,18 @@ namespace Task12ex2
         {
             Calculator calc = new Calculator();
 
-            string calcstring = "log(cos(1+2)+sin(6/2))=";
-
-            string stringRPN = calc.getRPN(calcstring);
-
+            Console.WriteLine("Original");
+            string calcstring = "log(cos(2-2)*40+10+50*sin(60+30))=";
+            Console.WriteLine(calcstring);
+            string stringRPN = calc.GetRPN(calcstring);
+            Console.WriteLine("transformed to RPN");
             Console.WriteLine(stringRPN);
+
+            double result = calc.CalcRPN(stringRPN);
+            Console.Write("Result = ");
+            Console.WriteLine(result.ToString());
+
+            
         }
     }
 }

@@ -88,13 +88,13 @@ namespace task12
             return result;
         }
 
-
+// Тут краще використати Predicate, а не Func
         public List<Product> SelectSome(Func<Product, bool> predicate)
         {
             return products.Where(predicate).ToList();
         }
 
-
+//percent
         public void  IncrisePrice(int Percent)
         {
             foreach (Product product in products)

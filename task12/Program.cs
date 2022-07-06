@@ -11,7 +11,7 @@ namespace task12
             Storage storage = new Storage();
             storage.OnAddDailyProduc += CheckAndPrintMessageIfDayliProductIsCriticalTerm;
             storage.OnAddDailyProduc += AddDailyProductToUtilizationListIfCriticalTerm;
-
+// Зробивши зчитування тут, а не в сервісі Ви значно спростили задачу. Хотілося б сервіс залишити...
             using (StreamReader sr = new StreamReader("../../../Storage.txt"))
                 {
                     while (sr.Peek() >= 0)

@@ -7,7 +7,7 @@ namespace task12
     class Program
     {
         static void Main(string[] args)
-        {
+        {'//Я не знайшла файлу опису змін. 
             Storage storage = new Storage();
             storage.OnAddDailyProduc += CheckAndPrintMessageIfDayliProductIsCriticalTerm;
             storage.OnAddDailyProduc += AddDailyProductToUtilizationListIfCriticalTerm;

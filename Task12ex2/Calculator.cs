@@ -8,6 +8,7 @@ namespace Task12ex2
     {
         private List<string> alowwedOperators;
         private char delimiter;
+        private char doubleSeparator;
         private char finishChar;
         private char bracketBegin;
         private char bracketEnd;
@@ -18,17 +19,20 @@ namespace Task12ex2
             alowwedOperators = new List<string>() { "+", "-", "/", ":", "*", "^", "(", ")", "sin", "cos", "log" };
             delimiter = ' ';
             finishChar = '=';
+            doubleSeparator = '.';
             bracketBegin = '(';
             bracketEnd = ')';
         }
 
         private bool IsDelimeter(char c)
         {
-            if (delimiter.Equals(c) || finishChar.Equals(c))
-                return true;
-            return false;
+            return delimiter.Equals(c) || finishChar.Equals(c);
         }
 
+        private bool IsCharOfDouble(char c)
+        {
+            return Char.IsDigit(c) || doubleSeparator.Equals(c);
+        }
 
         private int GetPriority(string s)
         {
@@ -61,9 +65,9 @@ namespace Task12ex2
                     continue;
 
 
-                if (Char.IsDigit(calcstring[i]))
+                if (IsCharOfDouble(calcstring[i]))
                 {
-                    while (i < stringLength && Char.IsDigit(calcstring[i]))
+                    while (i < stringLength && IsCharOfDouble(calcstring[i]))
                     {
                         output += calcstring[i];
                         i++;
@@ -74,14 +78,14 @@ namespace Task12ex2
                     continue;
                 }
 
-                if (!Char.IsDigit(calcstring[i]))
+                if (!IsCharOfDouble(calcstring[i]))
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.Append(calcstring[i]);
                     if (!alowwedOperators.Contains(sb.ToString()))
                     {
                         while (i < stringLength - 1
-                        && !Char.IsDigit(calcstring[i + 1])
+                        && !IsCharOfDouble(calcstring[i + 1])
                         && !IsDelimeter(calcstring[i + 1]))
                         {
                             if (alowwedOperators.Contains(calcstring[i + 1].ToString()))
@@ -147,9 +151,9 @@ namespace Task12ex2
                 }
                 else
                 {
-                    if (Char.IsDigit(input[i]))
+                    if (IsCharOfDouble(input[i]))
                     {
-                        while (i < stringLength && Char.IsDigit(input[i]))
+                        while (i < stringLength && IsCharOfDouble(input[i]))
                         {
                             sb.Append(input[i]);
                             i++;
@@ -163,7 +167,7 @@ namespace Task12ex2
                         if (!alowwedOperators.Contains(sb.ToString()))
                         {
                             while (i < stringLength - 1
-                            && !Char.IsDigit(input[i + 1])
+                            && !IsCharOfDouble(input[i + 1])
                             && !IsDelimeter(input[i + 1]))
                             {
                                 if (alowwedOperators.Contains(input[i + 1].ToString()))
